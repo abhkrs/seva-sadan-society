@@ -44,9 +44,8 @@ get_header();
             <?php endwhile; ?>
         </div>
 
-        <div style="background: #FFE3C2;" class="p-1 rounded mb-4 mb-lg-5 mt-3 animate-this"></div>
-
         <?php while (have_rows('patron_member_heading')) : the_row(); ?>
+        <div style="background: #FFE3C2;" class="p-1 rounded mb-4 mb-lg-5 mt-3 animate-this"></div>
         <h2 class="fs-1 fw-normal text-center animate-this"> <?php the_sub_field('normal_text'); ?>
             <span class="fw-bold text-prime"> <?php the_sub_field('bold_text'); ?></span>
         </h2>
@@ -66,9 +65,9 @@ get_header();
             <?php endwhile; ?>
         </div>
 
-        <div style="background: #FFE3C2;" class="p-1 rounded mb-4 mb-lg-5 mt-3 animate-this"></div>
-
         <?php while (have_rows('advisory_panel_heading')) : the_row(); ?>
+        <div style="background: #FFE3C2;" class="p-1 rounded mb-4 mb-lg-5 mt-3 animate-this" id="advisory"></div>
+
         <h2 class="fs-1 fw-normal text-center animate-this"> <?php the_sub_field('normal_text'); ?>
             <span class="fw-bold text-prime"> <?php the_sub_field('bold_text'); ?></span>
         </h2>

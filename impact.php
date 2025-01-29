@@ -25,7 +25,7 @@ get_header();
 <?php include('hero.php'); ?>
 <?php include('topsection.php'); ?>
 
-<section class="bg-prime">
+<section class="fixedbg">
     <div class="container py-5">
         <div class="row justify-content-center py-lg-5 gap-lg-5">
             <?php while (have_rows('key_stats')) : the_row(); ?>
@@ -108,7 +108,6 @@ jQuery(document).ready(function($) {
     animateKeyFactCounters();
 });
 </script>
-
 
 
 <?php get_footer(); ?>

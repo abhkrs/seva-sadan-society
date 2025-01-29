@@ -16,14 +16,26 @@ get_header();
     padding: 30px;
 }
 
+.hover {
+    transition: all .3s ease-in-out;
+    background: #fff;
+    box-shadow: 0 0 5px 0 #0001;
+}
+
 .contnetcard:hover {
     /* box-shadow: 0 0 12px 3px #0003; */
     transform: translateY(-5px);
     transition: all .3s ease-in-out;
 }
+.hover:hover{
+    box-shadow: 0 0 12px 3px #0002;
+    transform: translateY(-5px);
+    transition: all .3s ease-in-out;
+}
 
-details{
-    background:#fff;
+details {
+    background: #fff;
+    box-shadow: 0 0 3px 0 #0001;
 }
 
 details[open] {
@@ -33,6 +45,35 @@ details[open] {
 
 details[open] * {
     color: #fff;
+}
+
+details summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-right: 20px;
+    position: relative;
+}
+
+details summary::marker,
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: url('<?php echo get_template_directory_uri();?>/images/close.svg') no-repeat center;
+    background-size: contain;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+    background: url('<?php echo get_template_directory_uri();?>/images/open.svg') no-repeat center;
+    background-size: contain;
 }
 </style>
 
@@ -60,28 +101,22 @@ details[open] * {
 
 <?php while (have_rows('contact_section')) : the_row(); ?>
 
-<section class="fixedbg" style=" background-image: url('<?php the_sub_field('background_image'); ?>');">
+<section class="fixedbg">
     <div style="background: var(--bg); z-index:1; position:relative;">
         <div style="background:var(--lgr); padding:50px;"></div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-3 d-flex align-items-end">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/phone.webp" alt="phone icon"
-                    class="img-fluid" style="margin-top:-100px;">
-            </div>
-            <div class="col-9 d-flex flex-column justify-content-center ">
-                <h2 class="animate-this text-white mb-4 fs-2"><?php the_sub_field('normal_text'); ?> <span
-                        class="fw-bold text-white"><?php the_sub_field('bold_text'); ?></span></h2>
+    <div class="container pt-xl-3">
+        <div class="py-5 d-flex flex-column justify-content-center ">
+            <h2 class="animate-this text-white mb-4 pb-xl-2 fs-base"><?php the_sub_field('normal_text'); ?> <span
+                    class="fw-bold text-white"><?php the_sub_field('bold_text'); ?></span></h2>
 
-                <ul class="text-prime">
-                    <?php while (have_rows('pointers')) : the_row(); ?>
-                    <li class="animate-this fs-1 fw-bold text-sec">
-                        <?php the_sub_field('point_text'); ?>
-                    </li>
-                    <?php endwhile; ?>
-                </ul>
-            </div>
+            <ul class="text-prime fs-base">
+                <?php while (have_rows('pointers')) : the_row(); ?>
+                <li class="animate-this fw-bold text-sec">
+                    <?php the_sub_field('point_text'); ?>
+                </li>
+                <?php endwhile; ?>
+            </ul>
         </div>
     </div>
 </section>
@@ -94,7 +129,7 @@ details[open] * {
         <div class="row">
             <?php while (have_rows('annual_reports_-_fcra_reports')) : the_row(); ?>
             <div class="col-md-6 animate-this py-3">
-                <div class="shadow bg-white rounded-4 px-5 py-3 text-center">
+                <div class="hover bg-white rounded-4 px-5 py-3 text-center">
                     <?php 
                     $image = get_sub_field('image');
                     if ( is_array($image) && isset($image['url'], $image['alt']) ) : ?>
@@ -113,17 +148,26 @@ details[open] * {
         <h2 class="fw-normal fs-1 mt-4">Quarterly <b class="text-prime">Reports</b> - FCRA Reports</h2>
 
         <?php while (have_rows('quarterly_reports_-_fcra_reports')) : the_row(); ?>
-            <details class="shadow rounded-4 p-4 animate-this mt-4">
-                <summary><?php the_sub_field('title'); ?></summary>
-                <div class="d-flex flex-wrap gap-3 justify-content-between p-2 pt-4">
-                    <?php while (have_rows('quarter')) : the_row(); ?>
-                        <a class="text-white"
-                        href="<?php the_sub_field('file'); ?>"><?php the_sub_field('name'); ?></a>
-                    <?php endwhile; ?>
-                </div>
-            </details>
+        <details class="rounded-4 p-4 pe-2 animate-this mt-4">
+            <summary><?php the_sub_field('title'); ?></summary>
+            <div class="d-flex flex-wrap gap-3 justify-content-between pe-4 pt-4">
+                <?php while (have_rows('quarter')) : the_row(); ?>
+                <a class="text-white" href="<?php the_sub_field('file'); ?>"><?php the_sub_field('name'); ?></a>
+                <?php endwhile; ?>
+            </div>
+        </details>
         <?php endwhile; ?>
     </div>
 </section>
 
 <?php get_footer(); ?>
+
+<script>
+jQuery(document).ready(function($) {
+    $("details summary").click(function(event) {
+        event.preventDefault();
+        $("details").removeAttr("open");
+        $(this).parent("details").attr("open", true);
+    });
+});
+</script>

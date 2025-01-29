@@ -7,6 +7,37 @@ get_header();
 ?>
 
 <style>
+.partnercard {
+    clip-path: polygon(0 0, calc(100% - 80px) 0, 100% 80px, 100% 100%, 0 100%);
+    border-radius: 20px;
+}
+</style>
+
+<?php include('hero.php'); ?>
+<?php include('topsection.php'); ?>
+<?php if( get_field('enable_logo_slider') ) { ?>
+    
+<section class="bg-white">
+    <div class="container py-3 animate-this">
+        <div class="logo-slide">
+            <div class="logo-row">
+                <?php $i=1; while (have_rows('partners')) : the_row(); ?>
+                <a href="#partner<?php echo $i; $i++?>">
+                    <img src="<?php the_sub_field('logo'); ?>" alt="<?php the_sub_field('name'); ?>">
+                </a>
+                <?php endwhile; ?>
+            </div>
+
+            <div class="logo-row">
+                <?php $i=1; while (have_rows('partners')) : the_row(); ?>
+                <a href="#partner<?php echo $i; $i++?>">
+                    <img src="<?php the_sub_field('logo'); ?>" alt="<?php the_sub_field('name'); ?>">
+                </a>
+                <?php endwhile; ?>
+            </div>
+        </div>
+</section>
+<style>
 .logo-slide {
     overflow: hidden;
     white-space: nowrap !important;
@@ -50,70 +81,33 @@ get_header();
     }
 }
 
-.partnercard {
-    clip-path: polygon(0 0, calc(100% - 80px) 0, 100% 80px, 100% 100%, 0 100%);
-    border-radius: 20px;
-}
-</style>
-
-<?php include('hero.php'); ?>
-<?php include('topsection.php'); ?>
-
-<section class="bg-white">
-    <div class="container py-3 animate-this">
-        <div class="logo-slide">
-            <div class="logo-row">
-                <?php $i=1; while (have_rows('partners')) : the_row(); ?>
-                <a href="#partner<?php echo $i; $i++?>">
-                    <img src="<?php the_sub_field('logo'); ?>" alt="<?php the_sub_field('name'); ?>">
-                </a>
-                <?php endwhile; ?>
-            </div>
-
-            <div class="logo-row">
-                <?php $i=1; while (have_rows('partners')) : the_row(); ?>
-                <a href="#partner<?php echo $i; $i++?>">
-                    <img src="<?php the_sub_field('logo'); ?>" alt="<?php the_sub_field('name'); ?>">
-                </a>
-                <?php endwhile; ?>
-            </div>
-        </div>
-</section>
-<style>
 .logo-row {
     animation-duration: <?php echo ($i-1)*2000?>ms !important;
 }
 </style>
-
-
-<?php while (have_rows('contact_section')) : the_row(); ?>
 <div class="p-3"></div>
+<?php } ?>
+<?php while (have_rows('contact_section')) : the_row(); ?>
 <div style="background:var(--lgr); padding:50px;"></div>
-<section class="fixedbg" style=" background-image: url('<?php the_sub_field('background_image'); ?>');">
+<section class="fixedbg">
     <div class="container">
-        <div class="row">
-            <div class="col-3 d-flex align-items-end">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/phone.webp" alt="phone icon"
-                    class="img-fluid pt-5">
+        <div class="py-5 d-flex flex-column justify-content-center ">
+            <p class="animate-this text-white mb-4"><?php the_sub_field('top_line_text'); ?></p>
+
+            <?php while (have_rows('contact_emails')) : the_row(); ?>
+            <div class="d-flex animate-this align-items-center flex-wrap pt-3">
+                <p class="text-white mb-0"><?php the_sub_field('contact_text'); ?></p>
+                <a href="mailto:<?php the_sub_field('email_id'); ?>" class="text-sec fs-base fw-bold ms-3">
+                    <?php the_sub_field('email_id'); ?></a>
             </div>
-            <div class="col-9 py-5 d-flex flex-column justify-content-center ">
-                <p class="animate-this text-white mb-5"><?php the_sub_field('top_line_text'); ?></p>
+            <?php endwhile; ?>
 
-                <?php while (have_rows('contact_emails')) : the_row(); ?>
-                <div class="d-flex animate-this align-items-center flex-wrap">
-                    <p class="text-white mb-0"><?php the_sub_field('contact_text'); ?></p>
-                    <a href="mailto:<?php the_sub_field('email_id'); ?>" class="text-sec fs-1 fw-bold ms-3">
-                        <?php the_sub_field('email_id'); ?></a>
-                </div>
-                <?php endwhile; ?>
+            <hr class="my-4 text-light">
 
-                <hr class="my-4 text-light">
-
-                <p class="animate-this text-white mb-4"><?php the_sub_field('description'); ?></p>
-                <p class="mb-0 animate-this text-white ">Please contact us at</p>
-                <a href="mailto:<?php the_sub_field('contact_us_email'); ?>" class="text-sec fs-1 fw-bold animate-this">
-                    <?php the_sub_field('contact_us_email'); ?></a>
-            </div>
+            <p class="animate-this text-white mb-4"><?php the_sub_field('description'); ?></p>
+            <p class="mb-0 animate-this text-white ">Please contact us at</p>
+            <a href="mailto:<?php the_sub_field('contact_us_email'); ?>" class="text-sec fs-base fw-bold animate-this">
+                <?php the_sub_field('contact_us_email'); ?></a>
         </div>
     </div>
 </section>

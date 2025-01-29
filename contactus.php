@@ -94,10 +94,15 @@ get_header();
 <section class="fixedbg">
     <div class="container py-5">
         <h2 class="animate-this text-white fs-1 fw-bold"><?php the_sub_field('heading'); ?></h2>
-        <p class="text-sec animate-this mt-4"><?php the_sub_field('address'); ?></p>
-        <p class="animate-this"><a class="text-sec"
-                href="mailto:<?php the_sub_field('email_id'); ?>"><?php the_sub_field('email_id'); ?></a></p>
+        <p class="text-sec animate-this mt-4">
+            <img src="<?php echo get_template_directory_uri();?>/images/mapicon.svg" alt="map icon" class="img-fluid me-2" style="width:27px;">
+            <?php the_sub_field('address'); ?>
+        </p>
         <p class="animate-this">
+              <img src="<?php echo get_template_directory_uri();?>/images/mailicon.svg" alt="email icon" class="img-fluid me-2" style="width:27px;">
+            <a class="text-sec" href="mailto:<?php the_sub_field('email_id'); ?>"><?php the_sub_field('email_id'); ?></a></p>
+        <p class="animate-this">
+            <img src="<?php echo get_template_directory_uri();?>/images/callicon.svg" alt="phoone icon" class="img-fluid me-2" style="width:27px;">
             <?php while (have_rows('phone_numbers')) : the_row(); ?>
             <a href="tel:+91 <?php the_sub_field('number_dialed'); ?>" class="text-sec">
                 <?php the_sub_field('number_shown'); ?> </a>
