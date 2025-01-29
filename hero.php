@@ -1,5 +1,5 @@
 <section class="hero">
-    <img src="<?php echo get_template_directory_uri(); ?>/images/herographics.png" alt="graphicimage" class="img-fluid graphicimage">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/logofl.svg" alt="graphicimage" class="img-fluid graphicimage">
     
     <?php 
     $hero_image = get_field('hero_image');

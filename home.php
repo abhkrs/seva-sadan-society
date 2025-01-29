@@ -11,12 +11,6 @@ get_header();
     height: 600px;
 }
 
-.hero .graphicimage {
-    position: absolute;
-    top: 0;
-    width: 75vw;
-}
-
 .hero .heroimage {
     position: absolute;
     right: 0;
@@ -36,8 +30,7 @@ get_header();
 </style>
 
 <section class="hero">
-    <img src="<?php echo get_template_directory_uri(); ?>/images/herographics.png" alt="graphicimage"
-        class="img-fluid graphicimage">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/logofl.svg" alt="graphicimage" class="img-fluid graphicimage">
     <?php 
     $hero_image = get_field('banner_image');
     if ( is_array($hero_image) && isset($hero_image['url'], $hero_image['alt']) ) : ?>
@@ -87,39 +80,6 @@ get_header();
 <?php get_footer(); ?>
 <script>
 jQuery(document).ready(function($) {
-    //    $(".owl-carousel.makingdiff").owlCarousel({
-    //     loop: true,
-    //     margin: 20,
-    //     nav: false,
-    //     dots: false,
-    //     autoplay: true,
-    //     autoplayTimeout: 5000,
-    //     autoplayHoverPause: true,
-    //     center: true,
-    //     items: 3,
-    //     stagePadding: 20,
-    //     responsive: {
-    //         0: {
-    //             items: 1,
-    //             stagePadding: 20
-    //         },
-    //         768: {
-    //             items: 3,
-    //             stagePadding: 60
-    //         },
-    //         1300: {
-    //             items: 5,
-    //             stagePadding: 60
-    //         }
-    //     }
-    // });
-
-    // $(".owl-carousel.makingdiff").on('changed.owl.carousel', function(event) {
-    //     var current = event.item.index;
-    //     $(".owl-item").removeClass("center");
-    //     $(".owl-item").eq(current).addClass("center");
-    // });
-
     $(".owl-carousel.testimonial").owlCarousel({
         loop: true,
         margin: 10,

@@ -7,28 +7,7 @@ get_header();
 ?>
 
 <?php include('hero.php'); ?>
-
-<section class="pad">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 pe-md-4 pe-lg-5">
-                <div class="image animate-this">
-                    <img src="<?php echo esc_url(get_field('image')['url']); ?>"
-                        alt="<?php echo esc_attr(get_field('image')['alt']); ?>" class="img-fluid">
-                </div>
-            </div>
-            <div class="d-flex align-items-center col-md-6">
-                <div class="ps-xl-4">
-                    <?php while (have_rows('heding')) : the_row(); ?>
-                    <h2 class="fs-1 fw-normal mb-0 animate-this"><?php the_sub_field('normal_text'); ?></h2>
-                    <h3 class="fs-1 fw-bold mb-3 animate-this"><?php the_sub_field('bold_text'); ?></h3>
-                    <?php endwhile; ?>
-                    <p class="animate-this"><?php the_field('desctription'); ?></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<?php include('topsection.php'); ?>
 
 <section class="pad">
     <?php $campno = 1; while (have_rows('campuses')) : the_row(); ?>

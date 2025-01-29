@@ -4,7 +4,7 @@
         <div class="footernav">
             <div class="pe-md-3 mt-0">
                 <img src="<?php the_field('logo','options'); ?>" alt="Seva Sadan Logo"
-                    class="img-fluid animate-this w-50" style="margin-top:-40px;">
+                    class="img-fluid animate-this" style="margin-top:-40px; max-width:160px;">
                 <p class="text-white animate-this"><?php the_field('description_below_logo','options'); ?></p>
             </div>
             <div>

@@ -7,8 +7,9 @@ get_header();
 ?>
 <?php include('hero.php'); ?>
 
-<section class="pad">
-    <div class="container">
+<section class="pad position-relative">
+    <img src="<?php echo get_template_directory_uri();?>/images/logo_element.svg" alt="" class="img-fluid position-absolute end-0 top-0 z-0">
+    <div class="container position-relative z-2">
         <?php $i=1; while (have_rows('content_sections')) : the_row(); ?>
         <div class="row pb-4 pb-md-5">
             <div

@@ -212,8 +212,8 @@ footer a {
 
 .hero .graphicimage {
     position: absolute;
-    top: 0;
-    width: 75vw;
+    bottom:0;
+    left:10px;
 }
 
 .hero .heroimage {
@@ -398,25 +398,43 @@ footer a {
 
 .fixedbg {
     position: relative;
+    background-image: url('../images/greenbg.webp');
     background-size: cover;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
 }
 
-.fixedbg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(3, 85, 81, .85);
-    z-index: 1;
-}
-
 .fixedbg .container {
     position: relative;
     z-index: 2;
+}
+
+.form {
+    display: grid;
+    gap: 14px;
+}
+.form textarea,
+.form select,
+.form input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border: 1px solid var(--sec);
+    border-radius: 20px;
+    padding: 14px;
+}
+.form textarea{
+    height:100px;
+}
+
+.form div.halfs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.wpcf7-submit{
+    max-width:250px;
 }
