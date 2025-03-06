@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero inner-banner">
     <img src="<?php echo get_template_directory_uri(); ?>/images/logofl.svg" alt="graphicimage" class="img-fluid graphicimage">
     
     <?php 
@@ -12,11 +12,17 @@
             <div class="col-lg-7 d-flex flex-column justify-content-center gap-2 h-100">
                 <?php if ( get_field('white_text') ) : ?>
                     <h3 class="text-white fs-1 fw-normal animate-this"><?php echo esc_html(get_field('white_text')); ?></h3>
-                <?php endif; ?>
-                
+                <?php endif; ?>                
                 <?php if ( get_field('orange_text') ) : ?>
                     <h1 class="text-sec fw-bold animate-this"><?php echo esc_html(get_field('orange_text')); ?></h1>
                 <?php endif; ?>
+
+                <?php if ( get_field('banner_description') ) : ?>
+                <div class="text-white animate-this fs-2">
+                    <?php the_field('banner_description') ?>
+                </div>
+                <?php endif; ?>
+
             </div>
         </div>
     </div>

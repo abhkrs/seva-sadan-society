@@ -14,9 +14,33 @@ get_header();
 </style>
 
 <?php include('hero.php'); ?>
-<?php include('topsection.php'); ?>
+<div class="lotus-overlay2">
+<section class="pad position-relative">
+    <!-- <img src="<?php echo get_template_directory_uri();?>/images/logo_element.svg" alt="" class="img-fluid position-absolute end-0 top-0 z-0"> -->
+    <div class="container position-relative z-2">
+        <div class="row flip-767">
+            <div class="col-md-5 pe-md-4 pe-lg-5">                
+            <?php 
+                $cimage = get_field('cllipy_image');
+                $cicon = get_field('cllipy_icon');
+                include('clipy.php');
+            ?>
+            </div>
+            <div class="d-flex align-items-center col-md-7">
+                <div class="ps-xl-4">
+                    <?php while (have_rows('heading')) : the_row(); ?>
+                    <h2 class="fs-1 fw-normal mb-0 animate-this"><?php the_sub_field('normal_text'); ?></h2>
+                    <h3 class="fs-1 fw-bold mb-3 animate-this"><?php the_sub_field('bold_text'); ?></h3>
+                    <?php endwhile; ?>
+                    <p class="animate-this"><?php the_field('description'); ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
 <?php if( get_field('enable_logo_slider') ) { ?>
-    
 <section class="bg-white">
     <div class="container py-3 animate-this">
         <div class="logo-slide">
@@ -87,6 +111,8 @@ get_header();
 </style>
 <div class="p-3"></div>
 <?php } ?>
+
+
 <?php while (have_rows('contact_section')) : the_row(); ?>
 <div style="background:var(--lgr); padding:50px;"></div>
 <section class="fixedbg">
@@ -125,7 +151,7 @@ get_header();
         <div class="row">
             <?php $i=1; while (have_rows('partners')) : the_row(); ?>
             <div id="partner<?php echo $i; $i++?>" class="col-md-6 p-3 animate-this">
-                <div class="partnercard bg-white p-4 shadow-sm h-100">
+                <div class="partnercard bg-white  shadow-sm h-100">
                     <img src="<?php the_sub_field('logo'); ?>" alt="<?php the_sub_field('name'); ?>"
                         class="img-fluid animate-this">
                     <h3 class="fs-4 fw-bold mt-4 mb-3 animate-this"><?php the_sub_field('name'); ?></h3>

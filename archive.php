@@ -93,12 +93,11 @@ get_header();
             <div class="col-lg-5">
                 <div class="blog-item h-100">
                     <?php if ($thumbnail): ?>
-                        <img 
-                            src="<?php echo esc_url($thumbnail['url']); ?>" 
-                            alt="<?php echo esc_attr($thumbnail['alt']); ?>" 
-                            class="img-fluid rounded-3 object-fit-cover w-100"
-                            loading="lazy"
-                        >
+                        <?php 
+                            $cimage = get_field('blog_thumbnail');
+                            $cicon = get_field('blog_thumbnail_icon');
+                            include('clipy.php');
+                        ?>
                     <?php else: ?>
                         <img 
                             src="<?php echo esc_url(get_template_directory_uri() . '/img/blogdummy.webp'); ?>" 

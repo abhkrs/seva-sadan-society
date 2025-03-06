@@ -70,6 +70,9 @@ jQuery(document).ready(function($) {
     $('.dropdowns a[href="javascript:void(0);"]').hover(function() {
         $('.megamenu').addClass('active');
     }, );
+    $('.navbar-toggler').click(function() {
+        $('.megamenu').toggleClass('active');
+    }, );
 
     $('header').mouseleave(function() {
         $('.megamenu').removeClass('active');
@@ -77,6 +80,22 @@ jQuery(document).ready(function($) {
 
     $('.dropdowns a').not('[href="javascript:void(0);"]').hover(function() {
         $('.megamenu').removeClass('active');
+    });
+
+    function updatePaymentLink() {
+        let total = $('.total').text();
+        if (total && parseFloat(total) > 0) {
+            let paymentUrl = '<?php echo home_url("/paymentprovider.php"); ?>?amount=' + parseFloat(total);
+            $('.cart a[href*="paymentprovider"]').attr('href', paymentUrl);
+        }
+    }
+    
+    // Update on page load
+    updatePaymentLink();
+    
+    // Update whenever cart changes
+    $(document).on('click', '.addthis, .remove, .showcart', function() {
+        setTimeout(updatePaymentLink, 100);
     });
 });
 
