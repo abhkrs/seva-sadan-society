@@ -60,57 +60,65 @@ get_header();
     </div>
 </section>
 </div>
-<?php while (have_rows('governance_&_information_section')) : the_row(); ?>
+
 <div class="p-3"></div>
 <section class="fixedbg py-xl-3">
     <div class="container pt-5 pb-3">
-        <h2 class="animate-this text-white fs-1 fw-normal"><?php the_sub_field('heading_normal'); ?> <span
+     <?php while (have_rows('governance_&_information_section')) : the_row(); ?>
+            <h2 class="animate-this text-white fs-1 fw-normal"><?php the_sub_field('heading_normal'); ?> <span
                 class="fw-bold text-white"><?php the_sub_field('heading_bold'); ?></span></h2>
+            <?php endwhile; ?>
         <div class="row flip-767 pt-4">
+       
             <div class="col-md-7">
-                <h3 class="fs-1 text-sec fw-bold animate-this"><?php the_sub_field('governing_bodies'); ?></h3>
-                <div class="animate-this fs-base text-white pt-3"><?php the_sub_field('governing_bodies_content'); ?>
-                </div>
+                <?php while (have_rows('governance_&_information_section')) : the_row(); ?>
+                    <h3 class="fs-1 text-sec fw-bold animate-this"><?php the_sub_field('governing_bodies'); ?></h3>
+                    <div class="animate-this fs-base text-white pt-3"><?php the_sub_field('governing_bodies_content'); ?></div>
+                <?php endwhile; ?>
             </div>
             <div class="col-md-5 ps-xl-5 ps-lg-4">
-                <h3 class="fs-1 text-sec fw-bold animate-this"><?php the_sub_field('employees'); ?></h3>
-                <div class="animate-this fs-base text-white pt-3"><?php the_sub_field('employees_content'); ?></div>
+                <?php while (have_rows('contact_section')) : the_row(); ?>
+                <h2 class="animate-this text-white fs-1 fw-bold"><?php the_sub_field('heading'); ?></h2>
+                <?php while (have_rows('paragraph')) : the_row(); ?>
+                <p class="text-white animate-this ">
+                    <?php the_sub_field('normal_text'); ?>
+                    <span class="text-sec"><?php the_sub_field('orange_text'); ?></span>
+                </p>
+                <?php endwhile; ?>
+                <p class="animate-this mb-2">
+                    <img src="<?php echo get_template_directory_uri();?>/images/mailicon.svg" alt="email icon"
+                        class="img-fluid me-2" style="width:27px;">
+                    <a class="text-sec"
+                        href="mailto:<?php the_sub_field('email_id'); ?>"><?php the_sub_field('email_id'); ?></a>
+                </p>
+                <p class="animate-this">
+                    <img src="<?php echo get_template_directory_uri();?>/images/callicon.svg" alt="phoone icon"
+                        class="img-fluid me-2" style="width:27px;">
+                    <?php while (have_rows('phone')) : the_row(); ?>
+                    <a href="tel:+91 <?php the_sub_field('number_dialed'); ?>" class="text-sec">
+                        <?php the_sub_field('number_shown'); ?> </a>
+                    <?php endwhile; ?>
+                </p>
+                <?php endwhile; ?>               
             </div>
         </div>
     </div>
 
-<?php endwhile; ?>
+
 
 <!-- xxxxxxxxx -->
 
-<?php while (have_rows('contact_section')) : the_row(); ?>
+
 
 
     <div class="container pb-5">
-        <h2 class="animate-this text-white fs-1 fw-bold"><?php the_sub_field('heading'); ?></h2>
-        <?php while (have_rows('paragraph')) : the_row(); ?>
-        <p class="text-white animate-this ">
-            <?php the_sub_field('normal_text'); ?>
-            <span class="text-sec"><?php the_sub_field('orange_text'); ?></span>
-        </p>
+        <?php while (have_rows('governance_&_information_section')) : the_row(); ?>
+            <h3 class="fs-1 text-sec fw-bold animate-this"><?php the_sub_field('employees'); ?></h3>
+            <div class="animate-this fs-base text-white pt-3"><?php the_sub_field('employees_content'); ?></div>
         <?php endwhile; ?>
-        <p class="animate-this mb-2">
-            <img src="<?php echo get_template_directory_uri();?>/images/mailicon.svg" alt="email icon"
-                class="img-fluid me-2" style="width:27px;">
-            <a class="text-sec"
-                href="mailto:<?php the_sub_field('email_id'); ?>"><?php the_sub_field('email_id'); ?></a>
-        </p>
-        <p class="animate-this">
-            <img src="<?php echo get_template_directory_uri();?>/images/callicon.svg" alt="phoone icon"
-                class="img-fluid me-2" style="width:27px;">
-            <?php while (have_rows('phone')) : the_row(); ?>
-            <a href="tel:+91 <?php the_sub_field('number_dialed'); ?>" class="text-sec">
-                <?php the_sub_field('number_shown'); ?> </a>
-            <?php endwhile; ?>
-        </p>
     </div>
 </section>
-<?php endwhile; ?>
+
 
 <?php if( get_field('enabledisable_our_supporters_section') ) { ?>
 <section class="pad">

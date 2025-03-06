@@ -356,8 +356,8 @@ footer a {
     justify-content: center;
 }
 .grid-3 li {
-    flex: 33.33%;
-    max-width: 31.33%;
+    flex: 25%;
+    max-width: 23%;
     margin: 1%;
     background: #fff;
     padding: 20px;

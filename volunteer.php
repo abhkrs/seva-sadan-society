@@ -10,6 +10,16 @@ get_header();
 <section class="pad position-relative">
     <!-- <img src="<?php echo get_template_directory_uri();?>/images/logo_element.svg" alt="" class="img-fluid position-absolute end-0 top-0 z-0"> -->
     <div class="container position-relative z-2">
+        <div class="row mb-4 mb-lg-5">
+            <div class="col-12 text-center">
+                <h2 class="fs-1 fw-normal mb-0 animate-this animated"><?php the_field('main_heading_light'); ?></h2>
+                <h3 class="fs-1 fw-bold mb-3 animate-this animated"> <?php the_field('main_heading_bold'); ?></h3>
+                <div class="animate-this fs-base animated">
+                    <div><?php the_field('main_description'); ?></div>
+                    <p class="fs-4 fw-bold"><?php the_field('main_subheading'); ?></p>
+                </div>
+            </div>
+        </div>
         <?php $i=1; while (have_rows('content_sections')) : the_row(); ?>
         <div class="row flip-767  pb-4 pb-md-5">
             <div

@@ -82,7 +82,7 @@ get_header();
                 <?php while( have_rows('counter') ) : the_row(); ?>
                     <li class="text-center">
                         <h3 class="text-prime2 fs-1 number "> <?php the_sub_field('number'); ?></h3>
-                        <div class="">
+                        <div class="fs-4 fw-bold">
                         <?php the_sub_field('title'); ?>
                         </div>
                     </li>
@@ -109,12 +109,12 @@ get_header();
                 </div>
             <div class="col-12 counter-lr-space">                
                 <?php if( have_rows('without_counter_style') ): ?>
-                <ul class="flex1 mt-4 mt-lg-5">
+                <ul class="flex1 mt-4 mt-lg-5 fact">
                 <?php while( have_rows('without_counter_style') ) : the_row(); ?>
-                    <li class="text-center">
-                        <div class="text-prime2 fs-2 fs-2-style2 mb-2 fw-bold"> <?php the_sub_field('title'); ?></div>
-                        <div class="">
-                        <?php the_sub_field('description'); ?>
+                    <li class="text-center s">
+                        <div class="fs-4 fw-bold one"> <?php the_sub_field('title'); ?></div>
+                        <div class="text-prime2 fs-2 fs-2-style2 mb-2 fw-bold two">
+                            <?php the_sub_field('description'); ?>
                         </div>
                     </li>
                     <?php endwhile; ?>    
@@ -140,10 +140,10 @@ get_header();
     style="background:url('<?php echo get_template_directory_uri(); ?>/images/counter_bg.webp') top center no-repeat">
     <div class="container ">
   
-		<h2 class="fs-1 fw-normal mb-0 animate-this mb-4 text-white"><?php the_field('apply_section_title'); ?> <span
-																													  class="fw-bold text-white"><?php the_field('apply_section_bold_title'); ?></span></h2>
+		<h2 class="fs-1 fw-normal mb-0 animate-this mb-4 text-white"><?php the_field('apply_section_title'); ?> 
+        <span class="fw-bold text-white"><?php the_field('apply_section_bold_title'); ?></span></h2>
 		<div class="animate-this text-white all-white"><?php the_field('apply_section_description'); ?></div>
-		<div class="d-flex align-items-center justify-content-center justify-content-md-end mt-4">
+		<div class="animate-this mt-4">
 			<?php 
 										 $fee_structure = get_field('fee_structure'); 
 										 if (!empty($fee_structure)): ?>
@@ -358,7 +358,13 @@ jQuery(document).ready(function($) {
         byRow: true,
         property: 'height',
     });
+
+    $('.fact .one').matchHeight();  
+    $('.fact .two').matchHeight();  
+
 })
+
+</script>
 
 
 jQuery(document).ready(function($) {    

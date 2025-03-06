@@ -212,3 +212,8 @@ function get_available_payment_dates() {
         'months' => $wpdb->get_col("SELECT DISTINCT DATE_FORMAT(payment_date, '%Y-%m') as month FROM $table_name ORDER BY month DESC")
     );
 }
+
+
+// For featured Image Enabled
+add_theme_support('post-thumbnails');
+

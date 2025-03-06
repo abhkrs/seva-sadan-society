@@ -89,7 +89,7 @@ iframe {
                         <?php while (have_rows('heading')) : the_row(); ?>
                         <h4 class="fw-bold  pt-2 "><?php the_sub_field('normal_text'); ?> <?php the_sub_field('bold_text'); ?></h4>
                         <?php endwhile; ?>
-                        <p class="">
+                        <p class="text-black">
                             <?php while (have_rows('paragraph')) : the_row(); ?><?php the_sub_field('normal_text'); ?>
                             <span class="fw-bold"><?php the_sub_field('bold_text'); ?></span>
                             <?php endwhile; ?>
@@ -233,7 +233,8 @@ jQuery(document).ready(function ($) {
 
         }
     }
-
+ 
+    $('.border-design .text-black').matchHeight();  
     
 
 });

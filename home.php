@@ -115,19 +115,29 @@ get_header();
             if ($query->have_posts()):
                 while ($query->have_posts()):
                     $query->the_post();
+                    $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+                $thumbnail_url = $thumbnail ? $thumbnail[0] : '';
+                
             ?>
             <div class="items">
-                <a class="contnetcard d-block" href="<?php the_permalink(); ?>">
-                    <img src="<?php echo esc_url(get_field('hero_image')['url']); ?>"
-                        alt="<?php echo esc_attr(get_field('hero_image')['alt']); ?>" class="img-fluid w-100 h-100 object-fit-cover" style="aspect-ratio:4/3;">
+                <a class="contnetcard d-block" href="<?php the_permalink(); ?>">                   
+                        <?php if ($thumbnail_url){ ?>
+                        <img class="img-fluid w-100 h-100 object-fit-cover" src="<?php echo $thumbnail_url; ?>"
+                            alt="<?php the_title_attribute(); ?>" style="aspect-ratio:4/3;" />
+                    <?php } ?>
+
                     <div class="text mt-3 text-sec"><?php echo get_the_date('j F, Y'); ?></div>
-                        <h3 class="fs-5 fw-semibold mt-2 mb-4"><?php the_title(); ?></h3>
+                        <div class="post-title fw-semibold mt-2 mb-4"><?php the_title(); ?></div>
                     <span class="btn-prime d-block w-fit py-2 px-4" >Read More</span>
                 </a>
             </div>
             <?php endwhile; ?>
             <?php endif; wp_reset_postdata();?>
         </div>
+        <div class=" animate-this mt-lg-5 mt-3 text-center">
+            <a href="<?php echo site_url(); ?>/blogs" class="btn-prime mx-auto">View All</a>
+        </div>
+
     </div>
 </section>
 <section class="position-relative z-2">
@@ -181,7 +191,13 @@ get_header();
 
 <?php get_footer(); ?>
 <script>
+
 jQuery(document).ready(function($) {
+    $('.blogs .post-title').matchHeight();
+});
+
+jQuery(document).ready(function($) {
+
     // $(".owl-carousel.testimonial").owlCarousel({
     //     loop: true,
     //     margin: 10,

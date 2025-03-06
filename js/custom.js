@@ -2,9 +2,9 @@ jQuery(document).ready(function ($) {
 	$('.approach-item').matchHeight();
   $('.testimnial-item .desc').matchHeight();  
   $('.testimnial-item .fw-bold').matchHeight();  
-
   $('.round-4-design .text').matchHeight();  
   $('.round-4-design h3').matchHeight();  
+
 });
 
 
